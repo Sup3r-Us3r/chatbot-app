@@ -1,0 +1,20 @@
+POST http://localhost:3334/chat HTTP/1.1
+Content-Type: application/json
+Authorization: 123456
+
+{
+  "user_id": "1",
+  "user_message": "Hello, What your name?"
+}
+
+###
+
+POST http://localhost:3334/chat HTTP/1.1
+Content-Type: application/json
+Authorization: 123456
+
+{
+  "chat_id": "15c97c23-3a37-4d56-8def-5274b1fb606f",
+  "user_id": "1",
+  "user_message": "Continue"
+}
