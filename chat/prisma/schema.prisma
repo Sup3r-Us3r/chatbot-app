@@ -1,0 +1,35 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Chat {
+  id             String   @id @default(uuid())
+  remote_chat_id String?
+  user_id        String
+  created_at     DateTime @default(now())
+
+  messages Message[]
+
+  @@map("chats")
+}
+
+model Message {
+  id           String   @id @default(uuid())
+  has_answered Boolean  @default(false)
+  is_from_bot  Boolean  @default(false)
+  content      String   @db.Text
+  created_at   DateTime @default(now())
+
+  chat    Chat   @relation(fields: [chat_id], references: [id])
+  chat_id String
+
+  @@map("messages")
+}

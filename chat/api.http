@@ -1,0 +1,54 @@
+@token = eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..0uwNN_09GPXg0hPO.vwUvy_yveSzbb0FRE-r9vACG_8hR1dUc6Yaio55jnLGCM8i7bMiLq9HEAPhIzejFGzqt6Wj4A5_nB-ITKAGodgfEA4WAlNccYdMYVrOfn6WgtxKEnDXDr0ZgiNgRvcqd9RuSF4n3nZX81gOeiNQyad410HQnxPCRen3U_vhWBKyl9ovefVyHsBGnXHc.5Rg4hjLDFclKFXQEtGwupw
+
+# Generate fake token
+POST http://localhost:3001/api/generate-token
+Content-Type: application/json
+
+{
+  "user_id": "1052b815-1d8f-4a35-894c-fe0f95a03036"
+}
+
+###
+
+# Create a new chat
+POST http://localhost:3001/api/chats
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "message": "Hello World"
+}
+
+###
+
+# List chats
+GET http://localhost:3001/api/chats
+Authorization: Bearer {{token}}
+
+###
+
+@chatId = d53f8666-98c8-4e63-9247-d48e7ba99526
+
+# List chat messages
+GET http://localhost:3001/api/chats/{{chatId}}/messages
+Authorization: Bearer {{token}}
+
+###
+
+@chatId = d53f8666-98c8-4e63-9247-d48e7ba99526
+
+# Create a new message
+POST http://localhost:3001/api/chats/{{chatId}}/messages
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "message": "I'm testing the API"
+}
+
+###
+
+@messageId = ab2179aa-1fb9-4945-a18d-6bc298340902
+
+# SSE for test
+GET http://localhost:3001/api/messages/{{messageId}}/events

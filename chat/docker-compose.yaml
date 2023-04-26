@@ -1,0 +1,49 @@
+version: "3"
+
+services:
+  app:
+    container_name: chat_app
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - ".:/home/node/app"
+    extra_hosts:
+      - "host.docker.internal:172.17.0.1"
+
+  db:
+    container_name: mysql_chat_app
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: chat_app
+      MYSQL_PASSWORD: root
+    ports:
+      - "3307:3306"
+    volumes:
+      - ".docker/mysql:/var/lib/mysql"
+    extra_hosts:
+      - "host.docker.internal:172.17.0.1"
+
+  keycloak:
+    container_name: keycloak
+    image: quay.io/keycloak/keycloak:21.1
+    command: start-dev
+    ports:
+      - "9000:8080"
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    volumes:
+      - ".docker/keycloak:/opt/keycloak/data/h2"
+    extra_hosts:
+      - "host.docker.internal:172.17.0.1"
+
+# Mac and Linux
+# /etc/hosts
+
+# Windows
+# C:\Windows\System32\drivers\etc\hosts
+
+# 127.0.0.1 host.docker.internal

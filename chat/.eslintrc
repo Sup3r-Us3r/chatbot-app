@@ -1,0 +1,8 @@
+{
+  "extends": "@sup3r-us3r/eslint-config/react",
+  "rules": {
+    "camelcase": "off",
+    "no-useless-constructor": "off",
+    "@typescript-eslint/ban-ts-comment": "off"
+  }
+}

@@ -1,0 +1,38 @@
+@import 'highlight.js/styles/github-dark.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::-webkit-scrollbar {
+  height: .5rem;
+  width: .5rem
+}
+
+::-webkit-scrollbar:horizontal {
+  height: .5rem;
+  width: .5rem
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgb(80, 90, 105);
+  border-radius: 9999px
+}
+
+::-webkit-scrollbar-thumb {
+  --tw-border-opacity: 1;
+  background-color: rgb(55, 65, 79);
+  border-radius: 9999px;
+  border-width: 1px;
+}
+
+pre {
+  max-width: 600px;
+  margin: 1rem 0;
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(58, 69, 84);
+}
