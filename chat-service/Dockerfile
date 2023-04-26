@@ -10,6 +10,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y \
   && rustup target add x86_64-unknown-linux-gnu
 
 WORKDIR /go/src
+
 RUN ln -sf /bin/bash /bin/sh
 COPY go.mod go.sum ./
 RUN go mod download && go mod verify
@@ -20,5 +21,8 @@ RUN cd /go/pkg/mod/github.com/j178/tiktoken-go@v0.2.1/tiktoken-cffi && \
 
 RUN apt update && apt install -y protobuf-compiler && apt install -y protoc-gen-go
 RUN go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2
+
+# RUN curl -L https://github.com/golang-migrate/migrate/releases/download/v4.15.2/migrate.linux-amd64.tar.gz | tar xzv
+# RUN mv migrate /pkg/golang-migrate
 
 CMD [ "tail", "-f", "/dev/null" ]
