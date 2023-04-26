@@ -11,6 +11,8 @@
 
 This application is a Chatbot that uses the OpenAI API to maintain a conversation, it has an interface similar to ChatGPT itself.
 
+https://user-images.githubusercontent.com/22561893/234720669-2c48c8d2-aa28-45a7-9eb5-10d1fbf66a91.mov
+
 ### Project Architecture Overview
 
 ![Project Architecture Overview](./.github/project-architecture-overview.png)
@@ -134,9 +136,9 @@ Create Client:
 
 > **ClientID**: nextjs
 
-> **Valid redirect URIs**: http://localhost:3000/\*
+> **Valid redirect URIs**: http://localhost:3000/*
 
-> **Web origins**: http://localhost:3000/\*
+> **Web origins**: http://localhost:3000/*
 
 > **Client authentication**: On
 
