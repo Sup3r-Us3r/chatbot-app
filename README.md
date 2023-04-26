@@ -74,8 +74,6 @@ $ cp .env.example .env
 OPENAI_API_KEY="PASTE THE OPENAI SECRET KEY VALUE"
 ```
 
-<br />
-
 ### Chat Front-end
 
 Access the folder:
@@ -178,8 +176,6 @@ $ go mod tidy
 
 Run migrations:
 
-> Run this command outside the container but it is necessary to install [sqlc](https://docs.sqlc.dev/en/latest/overview/install.html) and [golang-migrate](https://github.com/golang-migrate/migrate/tree/master/cmd/migrate).
-
 ```sh
 $ make migrate
 ```
@@ -208,6 +204,12 @@ Install dependencies:
 
 ```sh
 $ npm install
+```
+
+Run migrations:
+
+```sh
+$ npx prisma migrate dev
 ```
 
 Run front-end:
